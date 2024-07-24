@@ -37,7 +37,7 @@ inline void _scale_attn_mask_fusion_kernel(
       (vec_size2 == vec_size1 * 2 && is_reduced_floating_point_v<T2>) ? 2 : 1;
   constexpr int64_t T2_n = 1;
   auto vec_scale = at::vec::VectorizedN<T1, T1_n>(val);
-  int64_t i = 0;
+  int64_t i = 0; 
   for (; i < size - (size % vec_size2); i += vec_size2) {
     auto a_n = at::vec::VectorizedN<T1, T1_n>::loadu(a + i);
     at::vec::VectorizedN<T2, T2_n> b_n;
